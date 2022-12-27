@@ -146,14 +146,14 @@ const QrcodeReader: React.FC<QrcodeReaderProps> = ({}) => {
       ) : (
         <div className="md:pt-5 h-[calc(100vh-200px)] items-center md:px-10 md:grid md:grid-cols-2   flex flex-wrap  pb-10 pt-5 ">
           <div className="p-10 m-5 h-1/2 w-full ">
-            <h1 className="text-center text-secondary text-4xl font-semibold ">
+            <h1 className="text-center text-4xl font-semibold ">
               <span className="text-3xl text-gray-500">#</span>No users yet?
             </h1>
             <p className="mt-5 text-center">
               If you have not added your customers yet,{" "}
             </p>
             <Link to="/users/createuser">
-              <p className="text-center m-1 btn btn-circle btn-info flex justify-center md:w-1/3 w-1/3 mx-auto">
+              <p className="text-center m-1 btn btn-circle flex justify-center md:w-1/3 w-1/3 mx-auto">
                 Add one !!
               </p>{" "}
             </Link>
@@ -165,7 +165,7 @@ const QrcodeReader: React.FC<QrcodeReaderProps> = ({}) => {
             <img src="../public/search.png" alt="" />
           </div>{" "}
           <div className=" m-5 p-10 w-full h-1/2 ">
-            <h1 className="text-center text-secondary text-4xl font-semibold  ">
+            <h1 className="text-center  text-4xl font-semibold  ">
               <span className="text-3xl text-gray-500">#</span>Handle
               memberships
             </h1>
@@ -174,7 +174,7 @@ const QrcodeReader: React.FC<QrcodeReaderProps> = ({}) => {
               user data, including membership renewal and expiration
             </p>
             <Link to="/users/searchuser">
-              <p className="text-center m-1 btn btn-circle btn-info flex justify-center md:w-1/3 w-1/3 mx-auto">
+              <p className="text-center m-1 btn btn-circle flex justify-center md:w-1/3 w-1/3 mx-auto">
                 Search user
               </p>{" "}
             </Link>

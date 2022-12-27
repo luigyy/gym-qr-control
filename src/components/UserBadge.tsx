@@ -18,7 +18,7 @@ const UserBadge: React.FC<UserBadgeProps> = ({
 }) => {
   return (
     <Link to={`/users/searchbyid/${id}`}>
-      <button className="max-w-[700px] w-full btn btn-secondary hover:border-l-primary hover:border-2 flex justify-between m-1 items-center h-16 px-5 py-2 rounded-2xl mx-auto">
+      <button className="max-w-[700px] w-full btn btn-primary hover:border-l-primary hover:border-2 flex justify-between m-1 items-center h-16 px-5 py-2 rounded-2xl mx-auto">
         <div>
           <img
             className="w-6 md:w-8 object-contain rounded-full"

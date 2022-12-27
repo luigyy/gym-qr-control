@@ -53,7 +53,7 @@ const CreateUser: React.FC<CreateUserProps> = ({}) => {
       <form className="w-full max-w-lg p-10  mx-auto">
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label className="block text-secondary uppercase tracking-wide text-xs font-bold mb-2">
+            <label className="block  uppercase tracking-wide text-xs font-bold mb-2">
               First Name
             </label>
             <input
@@ -66,7 +66,7 @@ const CreateUser: React.FC<CreateUserProps> = ({}) => {
             />
           </div>
           <div className="w-full md:w-1/2 px-3">
-            <label className="block uppercase tracking-wide text-secondary text-xs font-bold mb-2">
+            <label className="block uppercase tracking-wide  text-xs font-bold mb-2">
               Last Name
             </label>
             <input
@@ -81,7 +81,7 @@ const CreateUser: React.FC<CreateUserProps> = ({}) => {
         </div>
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
-            <label className="block uppercase tracking-wide text-secondary text-xs font-bold mb-2">
+            <label className="block uppercase tracking-wide text-xs font-bold mb-2">
               Email
             </label>
             <input

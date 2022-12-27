@@ -49,7 +49,7 @@ const SearchUser: React.FC<SearchUserProps> = ({}) => {
             className="input input-bordered"
             onChange={(e) => onNameChange(e)}
           />
-          <button className="btn btn-square bg-secondary" onClick={onSubmit}>
+          <button className="btn btn-square " onClick={onSubmit}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
