@@ -77,7 +77,7 @@ const QrcodeReader: React.FC<QrcodeReaderProps> = ({}) => {
       <div className="w-[60%] flex items-center mx-auto justify-around">
         <div className="text-center p-5">
           <button
-            className={`btn huge:text-4xl huge:mt-32   ${
+            className={`btn huge:text-4xl mt-6 huge:mt-32   ${
               startScan ? "btn-secondary" : "btn-primary"
             }`}
             onClick={() => {
@@ -102,7 +102,7 @@ const QrcodeReader: React.FC<QrcodeReaderProps> = ({}) => {
             tabIndex={0}
             className="btn m-1 md:flex md:justify-around md:w-44"
           >
-            <span className="huge:"> Select camera</span>{" "}
+            <span className="huge:"> Select camera</span>
             <span className="hidden md:inline">
               {" "}
               <BsFillCameraVideoFill />
@@ -133,7 +133,7 @@ const QrcodeReader: React.FC<QrcodeReaderProps> = ({}) => {
               <li value={"user"}>Front Camera</li>
             </ul>
           </div> */}
-          <div className="w-1/4 min-w-[280px] huge:w-1/2 mt-10 max-h-full mx-auto ">
+          <div className="w-1/4 min-w-[280px] huge:w-1/2 mt-3 max-h-full mx-auto ">
             <QrReader
               facingMode={selected}
               delay={1000}
@@ -144,8 +144,8 @@ const QrcodeReader: React.FC<QrcodeReaderProps> = ({}) => {
           </div>
         </>
       ) : (
-        <div className="md:pt-5 h-[calc(100vh-200px)] md:px-10 md:grid md:grid-cols-2   flex flex-wrap  pb-10 pt-5 ">
-          <div className="border-8 border-red-500 p-10 m-5 h-full w-full ">
+        <div className="md:pt-5 h-[calc(100vh-200px)] items-center md:px-10 md:grid md:grid-cols-2   flex flex-wrap  pb-10 pt-5 ">
+          <div className="p-10 m-5 h-1/2 w-full ">
             <h1 className="text-center text-secondary text-4xl font-semibold ">
               <span className="text-3xl text-gray-500">#</span>No users yet?
             </h1>
@@ -158,13 +158,14 @@ const QrcodeReader: React.FC<QrcodeReaderProps> = ({}) => {
               </p>{" "}
             </Link>
           </div>{" "}
-          <div className="border-8 border-blue-500 m-5 p-10 h-full w-full ">
-            <h1 className="text-center text-secondary text-4xl font-semibold ">
-              insert image
-            </h1>
+          <div className=" m-5 p-10 h-full w-full ">
+            <img src="../public/register.png" alt="" />
           </div>{" "}
-          <div className="border-8 border-red-500 m-5 p-10 h-full w-full ">
-            <h1 className="text-center text-secondary text-4xl font-semibold ">
+          <div className=" m-5 p-10 h-full w-full ">
+            <img src="../public/search.png" alt="" />
+          </div>{" "}
+          <div className=" m-5 p-10 w-full h-1/2 ">
+            <h1 className="text-center text-secondary text-4xl font-semibold  ">
               <span className="text-3xl text-gray-500">#</span>Handle
               memberships
             </h1>
@@ -177,11 +178,6 @@ const QrcodeReader: React.FC<QrcodeReaderProps> = ({}) => {
                 Search user
               </p>{" "}
             </Link>
-          </div>{" "}
-          <div className="border-8 border-blue-500 m-5 p-10 h-full w-full ">
-            <h1 className="text-center text-secondary text-4xl font-semibold ">
-              insert image
-            </h1>
           </div>{" "}
         </div>
       )}
