@@ -5,7 +5,7 @@ import Success from "../components/Success";
 
 interface CreateUserProps {}
 
-const REGISTER_URL = "http://localhost:5000/register";
+const REGISTER_URL = "http://localhost:5000/auth/register";
 
 const CreateUser: React.FC<CreateUserProps> = ({}) => {
   const [name, setName] = useState<string>("");

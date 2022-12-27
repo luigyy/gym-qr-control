@@ -6,7 +6,7 @@ import UserInterface from "../Interfaces/UserInterface";
 
 interface SearchUserProps {}
 
-const URL = "http://localhost:5000/getuserbyname/";
+const URL = "http://localhost:5000/user/readbyname/";
 
 const SearchUser: React.FC<SearchUserProps> = ({}) => {
   const [name, setName] = useState<string>();
@@ -18,7 +18,7 @@ const SearchUser: React.FC<SearchUserProps> = ({}) => {
   //get users
   const getUsersByName = (name: any): void => {
     axios
-      .get(URL + name)
+      .post(URL + name)
       .then((res) => {
         setUsers(res.data.data.userData);
         setError(false);

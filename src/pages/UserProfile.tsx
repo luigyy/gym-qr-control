@@ -5,7 +5,7 @@ import UserInterface from "../Interfaces/UserInterface";
 import Qrcode from "../components/Qrcode";
 import Success from "../components/Success";
 
-const URL = "http://localhost:5000/getuserbyid/";
+const URL = "http://localhost:5000/user/readbyid/";
 const PROFILE_IMAGE_PLACEHOLDER =
   "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png";
 
@@ -21,8 +21,9 @@ const UserProfile: React.FC<UserProfileProps> = ({}) => {
   //get user from db
   useEffect(() => {
     const getUser = async (id: string) => {
-      const response = await axios(URL + id);
-      setUser(response.data.data.userData[0]);
+      const response = await axios.post(URL + id);
+      console.log(response);
+      setUser(response.data.data.userData);
     };
     getUser(id!).catch((err) => {
       navigate("/users/searchuser");
