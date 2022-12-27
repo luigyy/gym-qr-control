@@ -5,6 +5,7 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     screens: {
+      sm: "640px",
       md: "768px",
       huge: { raw: "(min-height: 1000px) and (min-width: 1000px)" }, //for tall and wide devices (ipad pro for example)
     },

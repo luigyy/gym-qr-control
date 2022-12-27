@@ -9,6 +9,7 @@ import Error from "./Error";
 import Loading from "./Loading";
 import axios from "axios";
 import Success from "./Success";
+import { Link } from "react-router-dom";
 
 interface QrcodeReaderProps {}
 
@@ -88,6 +89,9 @@ const QrcodeReader: React.FC<QrcodeReaderProps> = ({}) => {
           >
             {startScan ? "Stop Scan" : "Start Scan"}
           </button>
+          <p className="p-2 text-sm text-neutral-content italic">
+            Press to open camera
+          </p>
         </div>
         <div
           className={`dropdown huge:mt-32 dropdown-end ${
@@ -140,14 +144,45 @@ const QrcodeReader: React.FC<QrcodeReaderProps> = ({}) => {
           </div>
         </>
       ) : (
-        <div className="md:pt-24 pb-10 pt-5 ">
-          <h1 className="pb-10 text-center text-3xl huge:text-6xl text-primary italic font-bold">
-            Press "start scan" to open camera
-            <span className="text-4xl huge:text-7xl text-gray-400 text-semibold ">
-              {" "}
-              !
-            </span>
-          </h1>
+        <div className="md:pt-5 h-[calc(100vh-200px)] md:px-10 md:grid md:grid-cols-2   flex flex-wrap  pb-10 pt-5 ">
+          <div className="border-8 border-red-500 p-10 m-5 h-full w-full ">
+            <h1 className="text-center text-secondary text-4xl font-semibold ">
+              <span className="text-3xl text-gray-500">#</span>No users yet?
+            </h1>
+            <p className="mt-5 text-center">
+              If you have not added your customers yet,{" "}
+            </p>
+            <Link to="/users/createuser">
+              <p className="text-center m-1 btn btn-circle btn-info flex justify-center md:w-1/3 w-1/3 mx-auto">
+                Add one !!
+              </p>{" "}
+            </Link>
+          </div>{" "}
+          <div className="border-8 border-blue-500 m-5 p-10 h-full w-full ">
+            <h1 className="text-center text-secondary text-4xl font-semibold ">
+              insert image
+            </h1>
+          </div>{" "}
+          <div className="border-8 border-red-500 m-5 p-10 h-full w-full ">
+            <h1 className="text-center text-secondary text-4xl font-semibold ">
+              <span className="text-3xl text-gray-500">#</span>Handle
+              memberships
+            </h1>
+            <p className="text-center mt-5">
+              Search for an user and see, edit and update everything regarding
+              user data, including membership renewal and expiration
+            </p>
+            <Link to="/users/searchuser">
+              <p className="text-center m-1 btn btn-circle btn-info flex justify-center md:w-1/3 w-1/3 mx-auto">
+                Search user
+              </p>{" "}
+            </Link>
+          </div>{" "}
+          <div className="border-8 border-blue-500 m-5 p-10 h-full w-full ">
+            <h1 className="text-center text-secondary text-4xl font-semibold ">
+              insert image
+            </h1>
+          </div>{" "}
         </div>
       )}
       {loadingScan && (
