@@ -3,18 +3,17 @@ import axios from "axios";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import UserInterface from "../Interfaces/UserInterface";
 import Qrcode from "../components/Qrcode";
-import Success from "../components/Success";
-import QrcodeReader from "../components/QrcodeReader";
+import ProfileUserData from "../components/ProfileUserData";
+import UpdateMembership from "../components/UpdateMembership";
 
 const URL = "http://localhost:5000/user/readbyid/";
 const PROFILE_IMAGE_PLACEHOLDER =
   "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png";
 
-const TEMP_membershipIsActive = true;
-
 interface UserProfileProps {}
 
 const UserProfile: React.FC<UserProfileProps> = ({}) => {
+  const [updateMembership, setUpdateMembership] = useState<boolean>(false);
   const [user, setUser] = useState<UserInterface>();
   //
   const navigate = useNavigate();
@@ -59,51 +58,17 @@ const UserProfile: React.FC<UserProfileProps> = ({}) => {
           </div>
         </div>
       </div>
-      {/* pic div  */}
-      <div className=" md:h-full h-screen w-3/4 md:p-10 pt-10">
-        <div className="h-1/2 w-full md:grid md:grid-cols-3 min-[1000px]:grid-cols-2 flex flex-col">
-          <div className="items-center flex justify-center">
-            {" "}
-            <div className="font-semibold mx-10">Join date </div>
-            <span className="badge badge-info"> 06/09/69</span>{" "}
-          </div>
-          <div className="items-center flex justify-center">
-            {" "}
-            <div className="font-semibold mx-10"> Membership </div>
-            {TEMP_membershipIsActive ? (
-              <>
-                <span className="badge badge-success"> Active </span>{" "}
-              </>
-            ) : (
-              <>
-                <span className="badge badge-error"> Inactive </span>{" "}
-              </>
-            )}
-          </div>
-          <div className="items-center flex justify-center">
-            {" "}
-            {TEMP_membershipIsActive ? (
-              <>
-                <div className="font-semibold mx-10"> Expires </div>
-                <span className="badge badge-success "> 01/01/2000 </span>{" "}
-              </>
-            ) : (
-              <>
-                <div className="font-semibold mx-10"> Expired in </div>
-                <span className="badge badge-error"> 31/12/1999 </span>{" "}
-              </>
-            )}
-          </div>
-        </div>
-        <div className="md:h-1/2 ml-10 w-full md:flex md:flex-nowrap md:justify-around text-center ">
-          <button className="my-3 btn bg-neutral-focus md:my-auto  ">
-            Update Membership
-          </button>
-          <button className="btn my-3 btn-error md:my-auto ">
-            Delete user{" "}
-          </button>
-        </div>
-      </div>
+      {updateMembership ? (
+        <UpdateMembership
+          updateMembership={updateMembership}
+          setUpdateMembership={setUpdateMembership}
+        />
+      ) : (
+        <ProfileUserData
+          updateMembership={updateMembership}
+          setUpdateMembership={setUpdateMembership}
+        />
+      )}
     </div>
   );
 };
