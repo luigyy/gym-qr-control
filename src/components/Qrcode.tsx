@@ -8,10 +8,8 @@ interface QrcodeProps {
 
 const Qrcode: React.FC<QrcodeProps> = ({ payload, size }) => {
   return (
-    <div className="p-10 mb-5 bg-white">
-      <div>
-        <QRcode size={size} value={payload} />
-      </div>
+    <div>
+      <QRcode size={size} value={payload} />
     </div>
   );
 };
