@@ -62,6 +62,7 @@ const UserProfile: React.FC<UserProfileProps> = ({}) => {
         <UpdateMembership
           updateMembership={updateMembership}
           setUpdateMembership={setUpdateMembership}
+          customerName={user?.name || "undefined"}
         />
       ) : (
         <ProfileUserData
