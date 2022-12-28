@@ -36,12 +36,12 @@ const UserProfile: React.FC<UserProfileProps> = ({}) => {
   //payload to generate qr
   const payload = "id : " + id;
   return (
-    <div className="relative bg-neutral md:flex md:flex-nowrap text-neutral-content md:h-[calc(100vh-150px)] p-5 rounded-3xl w-80% m-10 ">
+    <div className="relative bg-neutral md:flex md:flex-nowrap text-neutral-content md:h-[calc(100vh-150px)] p-5 rounded-3xl h-[200vh] w-80% m-10 ">
       {/* pic div  */}
-      <div className="md:h-full flex flex-wrap md:w-1/4">
+      <div className="md:h-full h-screen flex flex-wrap md:w-1/4">
         <div className="md:h-1/2 w-full">
           <img
-            className="md:rounded-full md:w-2/3 md:mx-auto md:mt-4"
+            className="rounded-full md:w-2/3 mx-auto md:mt-4 w-1/2"
             src={PROFILE_IMAGE_PLACEHOLDER}
             alt=""
           />
@@ -52,7 +52,7 @@ const UserProfile: React.FC<UserProfileProps> = ({}) => {
           </h1>
           <h1 className="text-center mt-5"> {user?.email}</h1>
           <div
-            className="w-1/2 tooltip tooltip-info tooltip-left mx-auto p-5 bg-white mt-5 flex justify-center"
+            className="w-1/2 tooltip mt-32 md:mt-5 tooltip-info md:tooltip-left tooltip-bottom mx-auto p-5 bg-white flex justify-center"
             data-tip="Click to zoom in"
           >
             <Qrcode payload={payload} size={100} />
@@ -60,14 +60,14 @@ const UserProfile: React.FC<UserProfileProps> = ({}) => {
         </div>
       </div>
       {/* pic div  */}
-      <div className=" md:h-full w-3/4 p-10">
-        <div className="h-1/2 w-full grid grid-cols-3 ">
-          <div className="items-center flex ">
+      <div className=" md:h-full h-screen w-3/4 md:p-10 pt-10">
+        <div className="h-1/2 w-full md:grid md:grid-cols-3 min-[1000px]:grid-cols-2 flex flex-col">
+          <div className="items-center flex justify-center">
             {" "}
             <div className="font-semibold mx-10">Join date </div>
             <span className="badge badge-info"> 06/09/69</span>{" "}
           </div>
-          <div className="items-center flex ">
+          <div className="items-center flex justify-center">
             {" "}
             <div className="font-semibold mx-10"> Membership </div>
             {TEMP_membershipIsActive ? (
@@ -80,12 +80,12 @@ const UserProfile: React.FC<UserProfileProps> = ({}) => {
               </>
             )}
           </div>
-          <div className="items-center flex ">
+          <div className="items-center flex justify-center">
             {" "}
             {TEMP_membershipIsActive ? (
               <>
                 <div className="font-semibold mx-10"> Expires </div>
-                <span className="badge badge-success"> 01/01/2000 </span>{" "}
+                <span className="badge badge-success "> 01/01/2000 </span>{" "}
               </>
             ) : (
               <>
@@ -95,11 +95,13 @@ const UserProfile: React.FC<UserProfileProps> = ({}) => {
             )}
           </div>
         </div>
-        <div className="h-1/2 w-full  flex justify-around">
-          <button className="btn bg-neutral-focus my-auto">
+        <div className="md:h-1/2 ml-10 w-full md:flex md:flex-nowrap md:justify-around text-center ">
+          <button className="my-3 btn bg-neutral-focus md:my-auto  ">
             Update Membership
           </button>
-          <button className="btn btn-error my-auto">Delete user </button>
+          <button className="btn my-3 btn-error md:my-auto ">
+            Delete user{" "}
+          </button>
         </div>
       </div>
     </div>
