@@ -60,7 +60,7 @@ const UserProfile: React.FC<UserProfileProps> = ({}) => {
         </div>
       </div>
       {/* pic div  */}
-      <div className="  border-2 border-blue-500 md:h-full w-3/4 p-10">
+      <div className=" md:h-full w-3/4 p-10">
         <div className="h-1/2 w-full grid grid-cols-3 ">
           <div className="items-center flex ">
             {" "}
@@ -84,7 +84,7 @@ const UserProfile: React.FC<UserProfileProps> = ({}) => {
             {" "}
             {TEMP_membershipIsActive ? (
               <>
-                <div className="font-semibold mx-10"> Expires in </div>
+                <div className="font-semibold mx-10"> Expires </div>
                 <span className="badge badge-success"> 01/01/2000 </span>{" "}
               </>
             ) : (
@@ -95,7 +95,12 @@ const UserProfile: React.FC<UserProfileProps> = ({}) => {
             )}
           </div>
         </div>
-        <div className="h-1/2 w-full border-8 border-green-500"></div>
+        <div className="h-1/2 w-full  flex justify-around">
+          <button className="btn bg-neutral-focus my-auto">
+            Update Membership
+          </button>
+          <button className="btn btn-error my-auto">Delete user </button>
+        </div>
       </div>
     </div>
   );
