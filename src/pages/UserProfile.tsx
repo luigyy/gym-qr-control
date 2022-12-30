@@ -6,6 +6,7 @@ import Qrcode from "../components/Qrcode";
 import ProfileUserData from "../components/ProfileUserData";
 import UpdateMembership from "../components/UpdateMembership";
 import LoadingPage from "./LoadingPage";
+import QrModal from "../components/QrModal";
 
 const URL = "http://localhost:5000/user/readbyid/";
 const PROFILE_IMAGE_PLACEHOLDER =
@@ -79,7 +80,7 @@ const UserProfile: React.FC<UserProfileProps> = ({}) => {
                 className="w-1/2 tooltip mt-32 md:mt-5 tooltip-info md:tooltip-left tooltip-bottom mx-auto p-5 bg-white flex justify-center"
                 data-tip="Click to zoom in"
               >
-                <Qrcode payload={payload} size={100} />
+                <QrModal payload={payload} />
               </div>
             </div>
           </div>
