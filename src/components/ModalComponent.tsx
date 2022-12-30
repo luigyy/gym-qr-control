@@ -5,6 +5,7 @@ interface ModalComponentProps {
   contentTitle: string;
   content: string;
   customButtonFunc: () => void;
+  buttonStyle?: string;
 }
 
 const ModalComponent: React.FC<ModalComponentProps> = ({
@@ -12,11 +13,12 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
   content,
   contentTitle,
   customButtonFunc,
+  buttonStyle,
 }) => {
   return (
     <div>
       {/* The button to open modal */}
-      <label htmlFor="my-modal" className="btn bg-neutral-focus">
+      <label htmlFor="my-modal" className={`btn ${buttonStyle}`}>
         {title}
       </label>
 

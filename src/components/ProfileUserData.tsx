@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
 import UserInterface from "../Interfaces/UserInterface";
+import ModalComponent from "./ModalComponent";
+import axios from "axios";
+import Error from "./Error";
+import Success from "./Success";
+import { useNavigate } from "react-router-dom";
+
+const DELETE_USER_URL = "http://localhost:5000/user/delete/";
 
 interface ProfileUserDataProps {
   user: UserInterface;
@@ -9,7 +16,6 @@ interface ProfileUserDataProps {
 }
 //
 //
-const TEMP_membershipIsActive = true;
 
 const ProfileUserData: React.FC<ProfileUserDataProps> = ({
   setUpdateMembership,
@@ -17,7 +23,10 @@ const ProfileUserData: React.FC<ProfileUserDataProps> = ({
   formatDate,
   user,
 }) => {
+  const navigate = useNavigate();
   const [membershipIsActive, setMembershipIsActive] = useState<boolean>();
+  const [error, setError] = useState<string>("");
+  const [success, setSuccess] = useState<string>("");
 
   useEffect(() => {
     const expiresIn = new Date(user.expiresIn);
@@ -26,7 +35,17 @@ const ProfileUserData: React.FC<ProfileUserDataProps> = ({
       ? setMembershipIsActive(true)
       : setMembershipIsActive(false);
   }, []);
-
+  //
+  const deleteUser = async () => {
+    try {
+      await axios.post(DELETE_USER_URL + user._id);
+      setSuccess("User successfully deleted");
+      navigate("/users/searchuser");
+    } catch (err) {
+      setError("Error while deleting user");
+    }
+  };
+  //
   return (
     <div className=" md:h-full h-screen w-3/4 md:p-10 pt-10">
       <div className="h-1/2 w-full md:grid md:grid-cols-3 min-[1000px]:grid-cols-2 flex flex-col">
@@ -78,7 +97,25 @@ const ProfileUserData: React.FC<ProfileUserDataProps> = ({
         >
           Update Membership
         </button>
-        <button className="btn my-3 btn-error md:my-auto ">Delete user </button>
+        <div className="my-3 md:my-auto ">
+          <ModalComponent
+            title="Delete"
+            content="Deletion of an user is an irreversible action!"
+            contentTitle="Are you sure you want to delete?"
+            customButtonFunc={deleteUser}
+            buttonStyle="btn-error"
+          />
+        </div>
+      </div>
+      <div
+        className="mx-auto"
+        onClick={() => {
+          setError("");
+          setSuccess("");
+        }}
+      >
+        {error.length === 0 ? "" : <Error text={error} />}
+        {success.length === 0 ? "" : <Success text={success} />}
       </div>
     </div>
   );
