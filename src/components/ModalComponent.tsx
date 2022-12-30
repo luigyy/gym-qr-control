@@ -4,12 +4,14 @@ interface ModalComponentProps {
   title: string;
   contentTitle: string;
   content: string;
+  customButtonFunc: () => void;
 }
 
 const ModalComponent: React.FC<ModalComponentProps> = ({
   title,
   content,
   contentTitle,
+  customButtonFunc,
 }) => {
   return (
     <div>
@@ -25,7 +27,11 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
           <h3 className="font-bold text-lg">{contentTitle}</h3>
           <p className="py-4">{content}</p>
           <div className="modal-action">
-            <label htmlFor="my-modal" className="btn">
+            <label
+              htmlFor="my-modal"
+              className="btn"
+              onClick={customButtonFunc}
+            >
               Do it!
             </label>
           </div>

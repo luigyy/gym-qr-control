@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import UserInterface from "../Interfaces/UserInterface";
 
 interface ProfileUserDataProps {
+  user: UserInterface;
   updateMembership: boolean;
   setUpdateMembership: (updateMembership: boolean) => void;
+  formatDate: (date: string) => string;
 }
 //
 //
@@ -11,19 +14,33 @@ const TEMP_membershipIsActive = true;
 const ProfileUserData: React.FC<ProfileUserDataProps> = ({
   setUpdateMembership,
   updateMembership,
+  formatDate,
+  user,
 }) => {
+  const [membershipIsActive, setMembershipIsActive] = useState<boolean>();
+
+  useEffect(() => {
+    const expiresIn = new Date(user.expiresIn);
+    const today = new Date();
+    today < expiresIn
+      ? setMembershipIsActive(true)
+      : setMembershipIsActive(false);
+  }, []);
+
   return (
     <div className=" md:h-full h-screen w-3/4 md:p-10 pt-10">
       <div className="h-1/2 w-full md:grid md:grid-cols-3 min-[1000px]:grid-cols-2 flex flex-col">
         <div className="items-center flex justify-center">
           {" "}
           <div className="font-semibold mx-10">Join date </div>
-          <span className="badge badge-info"> 06/09/69</span>{" "}
+          <span className="badge badge-info">
+            {formatDate(user.createdAt)}
+          </span>{" "}
         </div>
         <div className="items-center flex justify-center">
           {" "}
           <div className="font-semibold mx-10"> Membership </div>
-          {TEMP_membershipIsActive ? (
+          {membershipIsActive ? (
             <>
               <span className="badge badge-success"> Active </span>{" "}
             </>
@@ -35,15 +52,21 @@ const ProfileUserData: React.FC<ProfileUserDataProps> = ({
         </div>
         <div className="items-center flex justify-center">
           {" "}
-          {TEMP_membershipIsActive ? (
+          {membershipIsActive ? (
             <>
               <div className="font-semibold mx-10"> Expires </div>
-              <span className="badge badge-success "> 01/01/2000 </span>{" "}
+              <span className="badge badge-success ">
+                {" "}
+                {formatDate(user.expiresIn)}{" "}
+              </span>{" "}
             </>
           ) : (
             <>
               <div className="font-semibold mx-10"> Expired in </div>
-              <span className="badge badge-error"> 31/12/1999 </span>{" "}
+              <span className="badge badge-error">
+                {" "}
+                {formatDate(user.expiresIn)}
+              </span>{" "}
             </>
           )}
         </div>
