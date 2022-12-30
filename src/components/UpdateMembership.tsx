@@ -4,10 +4,20 @@ import ModalComponent from "./ModalComponent";
 import axios from "axios";
 import UserBadge from "./UserBadge";
 import UserInterface from "../Interfaces/UserInterface";
+import Error from "./Error";
+import Success from "./Success";
 //
 
 const ADD_MONTH_URL = "http://localhost:5000/membership/addmonth/";
-
+//
+function calculateDaysBetweenDates(date1: Date, date2: Date) {
+  var oneDay = 24 * 60 * 60 * 1000;
+  var date1InMillis = date1.getTime();
+  var date2InMillis = date2.getTime();
+  var days = Math.round(Math.abs(date2InMillis - date1InMillis) / oneDay);
+  return days;
+}
+//
 interface UpdateMembershipProps {
   user: UserInterface;
   setUser: (user: UserInterface) => void;
@@ -31,12 +41,13 @@ const UpdateMembership: React.FC<UpdateMembershipProps> = ({
     try {
       const response = await axios.post(ADD_MONTH_URL + user._id);
       //add a month to user.expiresIn locally
-      const newExpire = new Date(user.expiresIn);
+      const newExpire = user.expiresIn ? new Date(user.expiresIn) : new Date();
       newExpire.setDate(newExpire.getDate() + 30);
       setUser({ ...user, expiresIn: newExpire.toString() });
+      setSuccess("Membership successfully updated");
       //
     } catch (err) {
-      alert(err);
+      setError("Error while updating membership");
     }
   };
   //
@@ -58,7 +69,14 @@ const UpdateMembership: React.FC<UpdateMembershipProps> = ({
           Membership control
         </p>
         <p className="text-center">
-          Expire date:{" "}
+          Days left:{" "}
+          <span className="badge badge-info mx-7 ">
+            {calculateDaysBetweenDates(new Date(), new Date(user.expiresIn))}
+          </span>
+        </p>
+
+        <p className="text-center">
+          Expiration date:{" "}
           <span className="badge badge-info mx-7 ">
             {formatDate(user.expiresIn)}
           </span>
@@ -72,6 +90,16 @@ const UpdateMembership: React.FC<UpdateMembershipProps> = ({
             customButtonFunc={addMonth}
           />
         </div>
+      </div>
+      <div
+        className="mx-auto"
+        onClick={() => {
+          setError("");
+          setSuccess("");
+        }}
+      >
+        {error.length === 0 ? "" : <Error text={error} />}
+        {success.length === 0 ? "" : <Success text={success} />}
       </div>
     </div>
   );
