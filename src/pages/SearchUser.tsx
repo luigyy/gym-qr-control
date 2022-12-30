@@ -4,11 +4,13 @@ import axios from "axios";
 import UserBadge from "../components/UserBadge";
 import UserInterface from "../Interfaces/UserInterface";
 
-interface SearchUserProps {}
+interface SearchUserProps {
+  customURL?: string;
+}
 
 const URL = "http://localhost:5000/user/readbyname/";
 
-const SearchUser: React.FC<SearchUserProps> = ({}) => {
+const SearchUser: React.FC<SearchUserProps> = ({ customURL }) => {
   const [name, setName] = useState<string>();
   const [users, setUsers] = useState<UserInterface[]>();
 
@@ -68,7 +70,7 @@ const SearchUser: React.FC<SearchUserProps> = ({}) => {
         </div>
       </div>
       {/* search bar */}
-      <div className="h-[calc(100vh-200px)]  overflow-y-scroll w-[80%] mx-auto">
+      <div className="h-[calc(100vh-200px)] bg-neutral rounded-3xl overflow-y-scroll w-[80%] mx-auto">
         {users?.map((user, index) => (
           <>
             <UserBadge
@@ -77,6 +79,7 @@ const SearchUser: React.FC<SearchUserProps> = ({}) => {
               name={user.name}
               lastName={user.lastName}
               email={user.email}
+              customURL={customURL}
             />
           </>
         ))}

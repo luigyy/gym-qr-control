@@ -20,7 +20,7 @@ const Users: React.FC<UserProps> = ({}) => {
           </button>
         </Link>
 
-        <Link to="#">
+        <Link to="/users/edituser">
           <button className="btn btn-secondary text-2xl m-10 flex mx-auto ">
             {" "}
             Edit user
@@ -37,7 +37,7 @@ const Users: React.FC<UserProps> = ({}) => {
             Create User
           </button>
         </Link>
-        <Link to="#">
+        <Link to="/users/searchuser">
           <button className="btn text-2xl btn-primary flex m-10 mx-auto ">
             {" "}
             Delete User

@@ -7,6 +7,7 @@ interface UserBadgeProps {
   name: string;
   lastName: string;
   email: string;
+  customURL?: string;
 }
 
 const UserBadge: React.FC<UserBadgeProps> = ({
@@ -15,9 +16,10 @@ const UserBadge: React.FC<UserBadgeProps> = ({
   name,
   lastName,
   email,
+  customURL,
 }) => {
   return (
-    <Link to={`/users/searchbyid/${id}`}>
+    <Link to={`${customURL ? customURL + id : `/users/searchbyid/${id}`} `}>
       <button className="max-w-[700px] w-full btn btn-primary hover:border-l-primary hover:border-2 flex justify-between m-1 items-center h-16 px-5 py-2 rounded-2xl mx-auto">
         <div>
           <img

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import UserInterface from "../Interfaces/UserInterface";
-import Qrcode from "../components/Qrcode";
 import ProfileUserData from "../components/ProfileUserData";
 import UpdateMembership from "../components/UpdateMembership";
 import LoadingPage from "./LoadingPage";

@@ -18,7 +18,10 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
   return (
     <div>
       {/* The button to open modal */}
-      <label htmlFor="my-modal" className={`btn ${buttonStyle}`}>
+      <label
+        htmlFor="my-modal"
+        className={`btn  ${buttonStyle || "bg-neutral-focus"}`}
+      >
         {title}
       </label>
 
@@ -26,6 +29,12 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
       <input type="checkbox" id="my-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box">
+          <label
+            htmlFor="my-modal"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
+          >
+            ✕
+          </label>
           <h3 className="font-bold text-lg">{contentTitle}</h3>
           <p className="py-4">{content}</p>
           <div className="modal-action">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Error from "../components/Error";
 import Success from "../components/Success";
@@ -47,6 +47,10 @@ const CreateUser: React.FC<CreateUserProps> = ({}) => {
         setSuccess("");
       });
   };
+  useEffect(() => {
+    setError("");
+    setSuccess("");
+  }, [name, email, lastName]);
 
   return (
     <div>
