@@ -93,11 +93,21 @@ const ProfileUserData: React.FC<ProfileUserDataProps> = ({
       <div className="md:h-1/2 ml-10 w-full md:flex md:flex-nowrap md:justify-around text-center ">
         <button
           onClick={() => setUpdateMembership(!updateMembership)}
-          className="my-3 btn bg-neutral-focus md:my-auto  "
+          className="tooltip tooltip-top my-3 btn bg-neutral-focus md:my-auto  "
+          data-tip="Go to update membership page"
         >
           Update Membership
         </button>
-        <div className="my-3 md:my-auto ">
+        <button
+          className="tooltip tooltip-top  btn bg-neutral-focus my-auto"
+          data-tip="Send email with QR Code"
+        >
+          Send <span className="text-primary"> QR</span>
+        </button>
+        <div
+          className="tooltip tooltip-top tooltip-error my-3 md:my-auto"
+          data-tip="Delete user"
+        >
           <ModalComponent
             title="Delete"
             content="Deletion of an user is an irreversible action!"
