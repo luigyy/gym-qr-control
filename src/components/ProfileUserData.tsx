@@ -7,6 +7,7 @@ import Success from "./Success";
 import { useNavigate } from "react-router-dom";
 
 const DELETE_USER_URL = "http://localhost:5000/user/delete/";
+const SEND_QR_URL = "http://localhost:5000/user/sendqr/";
 
 interface ProfileUserDataProps {
   user: UserInterface;
@@ -43,6 +44,15 @@ const ProfileUserData: React.FC<ProfileUserDataProps> = ({
       navigate("/users/searchuser");
     } catch (err) {
       setError("Error while deleting user");
+    }
+  };
+  //
+  const sendQr = async () => {
+    try {
+      await axios.post(SEND_QR_URL + user._id);
+      setSuccess("QR code successfully sent to user' email");
+    } catch (err) {
+      setError("Error when sending email to user");
     }
   };
   //
@@ -101,6 +111,7 @@ const ProfileUserData: React.FC<ProfileUserDataProps> = ({
         <button
           className="tooltip tooltip-top  btn bg-neutral-focus my-auto"
           data-tip="Send email with QR Code"
+          onClick={sendQr}
         >
           Send <span className="text-primary"> QR</span>
         </button>
