@@ -10,11 +10,11 @@ import Loading from "./Loading";
 import axios from "axios";
 import Success from "./Success";
 import { Link } from "react-router-dom";
+import BACKEND_URLS from "../../config";
 
 interface QrcodeReaderProps {}
 
-const FIRST_MEAL_URL = "http://localhost:5000/firstmeal";
-const SECOND_MEAL_URL = "http://localhost:5000/secondmeal";
+const { VALIDATE_QR_URL } = BACKEND_URLS;
 
 const QrcodeReader: React.FC<QrcodeReaderProps> = ({}) => {
   //
@@ -55,13 +55,9 @@ const QrcodeReader: React.FC<QrcodeReaderProps> = ({}) => {
     if (splitData[0] !== "id") return setError("Invalid code");
     //
     //code valid ->
-    const URL = meal === "First" ? FIRST_MEAL_URL : SECOND_MEAL_URL;
-    console.log("URL " + URL);
     try {
-      const response = await axios.post(URL, { _id: splitData[1] });
-      console.log(response);
+      const response = await axios.post(VALIDATE_QR_URL + splitData[1]);
       const message = "Code successfully scanned!";
-      //display success message
       setSuccess(message);
     } catch (err) {
       console.log(err);

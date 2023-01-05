@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Error from "../components/Error";
 import Success from "../components/Success";
+import BACKEND_URLS from "../../config";
 
 interface CreateUserProps {}
 
-const REGISTER_URL = "http://localhost:5000/auth/register";
+const { CREATE_USER_URL } = BACKEND_URLS;
 
 const CreateUser: React.FC<CreateUserProps> = ({}) => {
   const [name, setName] = useState<string>("");
@@ -33,7 +34,7 @@ const CreateUser: React.FC<CreateUserProps> = ({}) => {
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     axios
-      .post(REGISTER_URL, { name, lastName, email })
+      .post(CREATE_USER_URL, { name, lastName, email })
       .then((res) => {
         //@ts-ignore
         setSuccess(res.data.message || "Register successfully!");

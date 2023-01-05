@@ -4,11 +4,11 @@ import axios from "axios";
 import Error from "../components/Error";
 import Success from "../components/Success";
 import { useParams, useNavigate } from "react-router-dom";
+import BACKEND_URLS from "../../config";
 
+const { GET_USER_URL, EDIT_USER_URL } = BACKEND_URLS;
+//
 interface EditUserProps {}
-
-const GET_USER_URL = "http://localhost:5000/user/readbyid/";
-const EDIT_USER_URL = "http://localhost:5000/user/update/";
 
 const EditUser: React.FC<EditUserProps> = ({}) => {
   const navigate = useNavigate();

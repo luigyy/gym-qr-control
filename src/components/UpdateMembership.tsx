@@ -6,9 +6,10 @@ import UserBadge from "./UserBadge";
 import UserInterface from "../Interfaces/UserInterface";
 import Error from "./Error";
 import Success from "./Success";
+import BACKEND_URLS from "../../config";
 //
 
-const ADD_MONTH_URL = "http://localhost:5000/membership/addmonth/";
+const { ADD_MONTH_URL } = BACKEND_URLS;
 //
 function calculateDaysBetweenDates(date1: Date, date2: Date) {
   var oneDay = 24 * 60 * 60 * 1000;

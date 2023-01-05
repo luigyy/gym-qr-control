@@ -3,12 +3,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import UserBadge from "../components/UserBadge";
 import UserInterface from "../Interfaces/UserInterface";
+import BACKEND_URLS from "../../config";
 
 interface SearchUserProps {
   customURL?: string;
 }
 
-const URL = "http://localhost:5000/user/readbyname/";
+const { GET_USER_BYNAME_URL } = BACKEND_URLS;
 
 const SearchUser: React.FC<SearchUserProps> = ({ customURL }) => {
   const [name, setName] = useState<string>();
@@ -20,7 +21,7 @@ const SearchUser: React.FC<SearchUserProps> = ({ customURL }) => {
   //get users
   const getUsersByName = (name: any): void => {
     axios
-      .post(URL + name)
+      .post(GET_USER_BYNAME_URL + name)
       .then((res) => {
         setUsers(res.data.data.userData);
         setError(false);

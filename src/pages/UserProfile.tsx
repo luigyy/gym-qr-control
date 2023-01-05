@@ -6,8 +6,9 @@ import ProfileUserData from "../components/ProfileUserData";
 import UpdateMembership from "../components/UpdateMembership";
 import LoadingPage from "./LoadingPage";
 import QrModal from "../components/QrModal";
+import BACKEND_URLS from "../../config";
 
-const URL = "http://localhost:5000/user/readbyid/";
+const { GET_USER_URL } = BACKEND_URLS;
 const PROFILE_IMAGE_PLACEHOLDER =
   "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png";
 
@@ -44,7 +45,7 @@ const UserProfile: React.FC<UserProfileProps> = ({}) => {
   useEffect(() => {
     const getUser = async (id: string) => {
       try {
-        const response = await axios.post(URL + id);
+        const response = await axios.post(GET_USER_URL + id);
         setUser(response.data.data.userData);
       } catch (err) {
         navigate("/");

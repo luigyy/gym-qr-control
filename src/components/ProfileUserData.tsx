@@ -5,10 +5,10 @@ import axios from "axios";
 import Error from "./Error";
 import Success from "./Success";
 import { useNavigate } from "react-router-dom";
+import BACKEND_URLS from "../../config";
 
-const DELETE_USER_URL = "http://localhost:5000/user/delete/";
-const SEND_QR_URL = "http://localhost:5000/user/sendqr/";
-
+const { DELETE_USER_URL, SEND_QR_URL } = BACKEND_URLS;
+//
 interface ProfileUserDataProps {
   user: UserInterface;
   updateMembership: boolean;
